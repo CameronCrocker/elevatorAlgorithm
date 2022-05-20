@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <script>
+    function validateScenario() {
+        var customer_value = document.forms["scenario_data"]["customers"].value;
+        var floors_value = document.forms["scenario_data"]["floors"].value;
+        var capacity_value = document.forms["scenario_data"]["max_capacity"].value;
+        if (customer_value == "") {
+            alert("Incorrect data given for customers");
+            return false;
+        }
+        else if (floors_value == "") {
+            alert("Incorrect data given for number of floors");
+            return false;
+        }
+        else if (capacity_value == "") {
+            alert("Incorrect data given for max capacity of the lift");
+            return false;
+        }
+    }
+
+    function validateChart() {
+        var customer_value = document.forms["chart_data"]["chart_customers"].value;
+        var floors_value = document.forms["chart_data"]["chart_floors"].value;
+        var capacity_value = document.forms["chart_data"]["chart_capacity"].value;
+        if (customer_value == "") {
+            alert("Incorrect data given for customers");
+            return false;
+        }
+        else if (floors_value == "") {
+            alert("Incorrect data given for number of floors");
+            return false;
+        }
+        else if (capacity_value == "") {
+            alert("Incorrect data given for max capacity of the lift");
+            return false;
+        }
+    }
+    </script>
+
+</head>
+
+<body>
+<h3><u>Run Specific Scenario:</u></h3>
+<form name="scenario_data" method="post" onsubmit="return validateScenario()" action="/run_scenario">
+    <input type="number" name="customers" placeholder="Customers">
+    <input type="number" name="floors" placeholder="Number of Floors">
+    <input type="number" name="max_capacity" placeholder="Max Capacity (people)">
+    <input type="submit" value="Submit">
+</form>
+<p></p>
+<h3><u>Chart Creation:</u></h3>
+<form name="chart_data" method="post" onsubmit="return validateChart()" action="/create_chart">
+    <input type="number" name="chart_customers" placeholder="Max Customers">
+    <input type="number" name="chart_floors" placeholder="Number of Floors">
+    <input type="number" name="chart_capacity" placeholder="Max Capacity (people)">
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
